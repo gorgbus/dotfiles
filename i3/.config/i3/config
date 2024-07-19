@@ -212,6 +212,6 @@ exec_always feh --bg-scale ~/.config/i3/background.png
 
 bindsym $mod+d exec --no-startup-id rofi -show combi -show-icons
 
-bindsym $mod+b exec firefox
+bindsym Mod4+shift+s exec flameshot gui
 
 exec --no-startup-id xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144
