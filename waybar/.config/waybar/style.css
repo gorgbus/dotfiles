@@ -110,8 +110,6 @@
 
 #memory {
     color: @peach;
-    border-radius: 0px 1rem 1rem 0px;
-    margin-right: 0.75rem;
 }
 
 #temperature {
@@ -124,6 +122,8 @@
 
 #battery {
     color: @green;
+    margin-right: 0.75rem;
+    border-radius: 0px 1rem 1rem 0px;
 }
 
 #battery.charging {
@@ -153,13 +153,8 @@
 
 /* --- */
 
-#custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
-}
-
 #custom-power {
     margin: 5px 5px 5px 0;
-    border-radius: 0px 1rem 1rem 0px;
+    border-radius: 1rem;
     color: @red;
 }
