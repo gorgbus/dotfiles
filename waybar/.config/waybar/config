@@ -40,7 +40,7 @@
 
 
     // --- RIGHT MODULES ---
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "custom/updates", "custom/dunst", "tray", "custom/lock", "custom/power"],
+    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "custom/updates", "custom/dunst", "tray"],
 
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
