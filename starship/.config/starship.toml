@@ -15,6 +15,7 @@ $php\
 $time\
 [\n$character](fg:#24273a)\
 """
+command_timeout = 2000
 
 [directory]
 style = "fg:#ffffff bg:#89b4fa"

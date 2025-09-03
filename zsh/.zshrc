@@ -17,7 +17,9 @@ eval "$(starship init zsh)"
 bindkey -v
 bindkey -v '^?' backward-delete-char
 
-alias hf='history | fzf -e'
+hf() {
+    print -z $( cat ~/.zsh/history | sed 's/^: [0-9]*:[0-9];//' | fzf -e )
+}
 
 export EDITOR=nvim
 

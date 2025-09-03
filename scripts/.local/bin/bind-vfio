@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -v -x
+
+# Set these to your dGPU drivers and buses
+DRIVERSVIDEO='amdgpu'
+DRIVERSAUDIO='snd_hda_intel'
+
+BUSVIDEO='0000:03:00.0'
+BUSAUDIO='0000:03:00.1'
+
+modprobe -i vfio-pci
+
+echo "1002 73df" > /sys/bus/pci/drivers/vfio-pci/new_id
+echo "0000:03:00.0" > /sys/bus/pci/devices/0000:03:00.0/driver/unbind
+echo "0000:03:00.0" > /sys/bus/pci/drivers/vfio-pci/bind
+echo "1002 73df" > /sys/bus/pci/drivers/vfio-pci/remove_id
+
+echo "1002 ab28" > /sys/bus/pci/drivers/vfio-pci/new_id
+echo "0000:03:00.1" > /sys/bus/pci/devices/0000:03:00.1/driver/unbind
+echo "0000:03:00.1" > /sys/bus/pci/drivers/vfio-pci/bind
+echo "1002 ab28" > /sys/bus/pci/drivers/vfio-pci/remove_id
+
+# End

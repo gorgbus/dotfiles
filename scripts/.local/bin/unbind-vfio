@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -v -x
+
+# Set these to your dGPU drivers and buses
+DRIVERSVIDEO='amdgpu'
+DRIVERSAUDIO='snd_hda_intel'
+
+BUSVIDEO='0000:03:00.0'
+BUSAUDIO='0000:03:00.1'
+
+modprobe -r vfio_pci vfio_pci_core vfio_iommu_type1
+
+# Override drivers with the dGPU ones
+echo $DRIVERSVIDEO > "/sys/bus/pci/devices/$BUSVIDEO/driver_override"
+echo $DRIVERSAUDIO > "/sys/bus/pci/devices/$BUSAUDIO/driver_override"
+
+# Unbind devices from vfio-pci driver
+echo $BUSVIDEO > /sys/bus/pci/drivers/vfio-pci/unbind
+echo $BUSAUDIO > /sys/bus/pci/drivers/vfio-pci/unbind
+
+# Load dGPU drivers and bind them to card
+modprobe -i $DRIVERSVIDEO $DRIVERSAUDIO
+echo $BUSVIDEO > "/sys/bus/pci/drivers/$DRIVERSVIDEO/bind"
+echo $BUSAUDIO > "/sys/bus/pci/drivers/$DRIVERSAUDIO/bind"
+
+# End
